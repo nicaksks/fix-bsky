@@ -7,7 +7,7 @@ import download from "./download";
 function embed(req: Request, res: Response): void {
   const { t, u } = req.query;
   res.status(200).json({
-    author_name: decodeURIComponent(atob(t?.toString() ?? "")),
+    author_name: decodeURIComponent(t?.toString() ?? ""),
     author_url: decodeURIComponent(u?.toString() ?? ""),
     provider_name: "Bluesky Social",
     provider_url: "https://github.com/nicaksks/fix-bsky",
@@ -32,9 +32,7 @@ async function profile(req: Request, res: Response): Promise<void> {
       originalURL,
       text: post.record.text,
       cid: post.embed.cid,
-      embed: `https://${req.hostname}/embed?t=${btoa(
-        encodeURIComponent(text)
-      )}&u=${encodeURIComponent(originalURL)}`,
+      embed: `https://${req.hostname}/embed?t=${encodeURIComponent(text)}&u=${encodeURIComponent(originalURL)}`,
       author: {
         handle: post.author.handle,
         displayName: post.author.displayName,
