@@ -1,0 +1,35 @@
+<meta content="#0481f7" name="theme-color" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="player" />
+<meta
+  name="twitter:title"
+  content="<%- author.displayName %> (@<%- author.handle %>)"
+/>
+<meta name="twitter:player" content="<%- videoURL %>" />
+<meta name="twitter:player:stream" content="<%- videoURL %>" />
+<meta
+  name="twitter:player:stream:content_type"
+  content="<%- media.mimeType %>"
+/>
+<meta name="twitter:player:width" content="<%- media.width %>" />
+<meta name="twitter:player:height" content="<%- media.height %>" />
+<meta name="twitter:image" content="<%- media.thumbnail %>" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Bluesky Social" />
+<meta property="og:url" content="<%- originalURL %>" />
+<meta
+  property="og:title"
+  content="<%- author.displayName %> (@<%- author.handle %>)"
+/>
+<meta property="og:video" content="<%- videoURL %>" />
+<meta property="og:video:secure_url" content="<%- videoURL %>" />
+<meta property="og:video:type" content="<%- media.mimeType %>" />
+<meta property="og:video:width" content="<%- media.width %>" />
+<meta property="og:video:height" content="<%- media.height %>" />
+<meta property="og:image" content="<%- media.thumbnail %>" />
+
+<link rel="alternate" href="<%- embed %>" type="application/json+oembed" />
+
+<meta http-equiv="redirect" content="0; url= <%- originalURL %>" />
