@@ -30,9 +30,11 @@ async function profile(req: Request, res: Response): Promise<void> {
     // < -- BLUEET (?) -- >
     const blueet = {
       originalURL,
-      text: post.record.text,
+      text,
       cid: post.embed.cid,
-      embed: `https://${req.hostname}/embed?t=${encodeURIComponent(text)}&u=${encodeURIComponent(originalURL)}`,
+      embed: `https://fix.nicashow.fun/embed?t=${encodeURIComponent(
+        text
+      )}&u=${encodeURIComponent(originalURL)}`,
       author: {
         handle: post.author.handle,
         displayName: post.author.displayName,
@@ -51,7 +53,6 @@ async function profile(req: Request, res: Response): Promise<void> {
     ) {
       return res.status(200).render("image", {
         ...blueet,
-        text,
         media: {
           mimeType: embed.media?.images[0].image.mimeType,
           url: post.embed.media.images[0].fullsize,
@@ -65,7 +66,6 @@ async function profile(req: Request, res: Response): Promise<void> {
     if (embed.$type === Type.GIF || embed.media?.$type === Type.GIF) {
       return res.status(200).render("gif", {
         ...blueet,
-        text,
         media: {
           mimeType: "image/gif",
           url: embed.external.uri,
@@ -94,7 +94,6 @@ async function profile(req: Request, res: Response): Promise<void> {
     if (error instanceof Exception) {
       return res.render("error", { error });
     }
-    console.log(error);
     res.render("error", { error: { message: "Unknown error" } });
   }
 }

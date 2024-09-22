@@ -33,6 +33,7 @@ export default async function getBlueet({
   const data: iData = await response.json();
 
   if (data.error) {
+    console.debug('getBlueet -> ', data);
     throw new Exception(
       String(errors[String(data.message)] ?? "Unknown error")
     );
