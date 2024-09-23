@@ -32,7 +32,7 @@ async function profile(req: Request, res: Response): Promise<void> {
       originalURL,
       text,
       cid: post.embed.cid,
-      embed: `https://fix.nicashow.fun/embed?t=${encodeURIComponent(
+      embed: `https://${req.hostname}/embed?t=${encodeURIComponent(
         text
       )}&u=${encodeURIComponent(originalURL)}`,
       author: {
